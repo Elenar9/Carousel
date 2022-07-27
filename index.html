@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en"
+<head>
+  <title>Slider Manual</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1">
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+   
+
+       
+    <div class="container-slider">
+    <div class="slider" id="slider">
+
+      <div class="slider_section"> <img src="https://i.postimg.cc/yYjG19G4/IMG-20211031-WA0019.jpg" alt="Memory of my Graduation Master in Diplomacy and international relations Diplomatic School of Madrid 2007"> 
+      </div> 
+      <div class="slider_section">
+       <img src="https://i.postimg.cc/YSvLk43p/IMG-20201212-WA0019-London-Eye.jpg" alt="London Eye"> 
+      </div>  
+      <div class="slider_section">
+       <img src="https://i.postimg.cc/VN1dD4Rn/20180306-031659.jpg" alt="Meeting with friends"> 
+      </div>
+      <div class="slider_section">
+        <img src="https://i.postimg.cc/W4CX065g/IMG-20191231-WA0030.jpg" alt="Celebrating the end of the year 2019 with my Mother and Sister."> 
+      </div>
+      <div class="slider_section">
+        <img src="https://i.postimg.cc/KzVSkMMH/IMG-20180622-WA0028-Diego-and-I-at-Edinburgh-Castle.jpg" alt="Reunion with my dear friend Diego in the Edinburgh Castle"> 
+      </div>
+      <div class="slider_section">
+        <img src="https://i.postimg.cc/85tQTbm3/IMG-20220507-223606.jpg" alt="Reunion with my friend Victoria and Emilio July 2021"> 
+      </div>
+    </div>
+    <div class="slider_btn slider_btn-right" id="btn-right">&#62</div> 
+    <div class="slider_btn slider_btn-left" id="btn-left">&#60</div>  
+  </div> 
+  <script src="slider.js"></script>
+   
+</body>
+</html>
+
+<script>
+const slider = document.querySelector("#slider");
+let sliderSection = document.querySelectorAll(".slider_section");
+let sliderSectionLast = sliderSection[sliderSection.length -1];
+
+const btnLeft = document.querySelector("#btn-left");
+const btnRight =document.querySelector("#btn-right");
+
+slider. insertAdjacentElement('afterbegin', sliderSectionLast);
+
+function Next() {
+   let sliderSectionFirst = document.querySelectorAll(".slider_section")[0]; 
+   slider.style.marginLeft ="-200";
+   slider.style.transition ="all 0.5s";
+   setTimeout(function(){
+    slider.style.transition="none";
+    slider.insertAdjacentElement('beforeend', sliderSectionFirst);
+    slider.style.marginLeft ="-100%";
+   }, 500) 
+   
+}
+
+
+function Prev() {
+    let sliderSection = document.querySelectorAll(".slider_section");
+    let sliderSectionLast = sliderSection[sliderSection.length -1];
+    slider.style.marginLeft ="0";
+    slider.style.transition ="all 0.5s";
+    setTimeout(function(){
+     slider.style.transition="none";
+     slider. insertAdjacentElement('afterbegin', sliderSectionLast);
+     slider.style.marginLeft ="-100%";
+    }, 500) 
+    
+ }
+btnRight.addEventListener('click', function() {
+    Next();
+});
+btnRight.addEventListener('click', function() {
+    Prev();
+});
+
+    
+</script>
